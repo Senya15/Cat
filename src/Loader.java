@@ -26,7 +26,7 @@ public class Loader {
         for (int i = 0; i < catCount; i++) {
             Cat cat = new Cat();
 
-            System.out.println("\tКошка : " + number++);
+            System.out.println("\tКошка №: " + number++);
             System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()) + " грамм");
 
 //###############################################################################################################
