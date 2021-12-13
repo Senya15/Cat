@@ -27,7 +27,7 @@ public class Loader {
             Cat cat = new Cat();
 
             System.out.println("\tКошка : " + number++);
-            System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()));
+            System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()) + " грамм");
 
 //###############################################################################################################
 //            Взаимодействие с кошкой
