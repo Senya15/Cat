@@ -27,6 +27,7 @@ public class Loader {
             Cat cat = new Cat();
 
             System.out.println("\tКошка №: " + number++);
+            System.out.println("\tЦвет кошки: " + cat.getRANDOM_COLOR());
             System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()) + " грамм");
 
 //###############################################################################################################
@@ -64,13 +65,13 @@ public class Loader {
             if (cat.isExploded() || cat.isDead()) {
                 System.out.println("\t" + cat.getStatus() + "\n================================");
                 System.out.println(cat.sumFeed() + "\n================================");
-                System.out.println("\tКоличесвто живых кошек: " + Cat.catCount + "\n*********************************\n\n");
+                System.out.println("\tКоличесвто живых кошек: " + cat.getCount() + "\n*********************************\n\n");
                 action = true;
             } else {
                 System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()));
                 System.out.println("\t" + cat.getStatus() + "\n================================");
                 System.out.println(cat.sumFeed() + "\n================================");
-                System.out.println("\tКоличесвто живых кошек: " + Cat.catCount + "\n*********************************\n\n");
+                System.out.println("\tКоличесвто живых кошек: " + cat.getCount() + "\n*********************************\n\n");
                 action = true;
             }
         }

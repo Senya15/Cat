@@ -3,31 +3,37 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collections;
+import java.util.Random;
+
+import static java.time.chrono.JapaneseEra.values;
+
 @Getter
 @Setter
 //@NoArgsConstructor
 @AllArgsConstructor
 public class Cat {
+    public static final int LEGS_COUNT = 4;
+    public static final double MIN_WEIGHT = 1000.0;
+    public static final double MAX_WEIGHT = 5000.0;
+    private final CatColor RANDOM_COLOR;
+
     private double originWeight;
     private double weight;
-
     private double feed;
+    private String name;
 
-    private double minWeight;
-    private double maxWeight;
-
-    public static int catCount;
+    public static int Count;
 
    // DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
 
     public Cat() {
 
-        catCount++;
+        Count++;
         weight = 1500 + 3000 * Math.random();
         originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 5000.0;
+        RANDOM_COLOR = CatColor.values()[new Random().nextInt(CatColor.values().length)];
 
     }
 
@@ -57,6 +63,9 @@ public class Cat {
         weight = weight + amount;
 
     }
+    public int getCount () {
+        return Count;
+    }
 
    /* public String getWeight() {
     //    String resultWeight = decimalFormat.format(weight);
@@ -64,11 +73,11 @@ public class Cat {
     }*/
 
     public String getStatus() {
-        if (weight < minWeight) {
-            Cat.catCount--;
+        if (weight < MIN_WEIGHT) {
+            Cat.Count--;
             return "Умерла :(";
-        } else if (weight > maxWeight) {
-            Cat.catCount--;
+        } else if (weight > MAX_WEIGHT) {
+            Cat.Count--;
             return "ВЗОРВАЛАСЬ!";
         } else if (weight > originWeight) {
             return "Спит Zzzzz";
@@ -78,12 +87,12 @@ public class Cat {
     }
 
     public boolean isExploded() {
-        return weight > maxWeight;
+        return weight > MAX_WEIGHT;
 
     }
 
     public boolean isDead() {
-        return weight < minWeight;
+        return weight < MIN_WEIGHT;
 
     }
 }
