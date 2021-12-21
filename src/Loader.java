@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -6,9 +7,10 @@ public class Loader {
         int number = 1;
         int catCount;
         boolean action = true;
+        ArrayList<Cat> cats = new ArrayList<>();
 
 //#######################################################################################################
-//        Генерация кошек! sdasdas test test
+//        Генерация кошек!
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Сколько кошек сгенерировать? ");
@@ -24,9 +26,10 @@ public class Loader {
 
         for (int i = 0; i < catCount; i++) {
             Cat cat = new Cat();
+            cats.add(cat);
 
             System.out.println("\tКошка №: " + number++);
-            System.out.println("\tЦвет кошки: " + cat.getRANDOM_COLOR());
+            System.out.println("\tЦвет кошки: " + cat.getColor());
             System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()) + " грамм");
 
 //###############################################################################################################
@@ -61,18 +64,39 @@ public class Loader {
                 }
             }
 
-            if (cat.isExploded() || cat.isDead()) {
-                System.out.println("\t" + cat.getStatus() + "\n================================");
-                System.out.println(cat.sumFeed() + "\n================================");
-                System.out.println("\tКоличесвто живых кошек: " + cat.getCount() + "\n*********************************\n\n");
-                action = true;
-            } else {
-                System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()));
-                System.out.println("\t" + cat.getStatus() + "\n================================");
-                System.out.println(cat.sumFeed() + "\n================================");
-                System.out.println("\tКоличесвто живых кошек: " + cat.getCount() + "\n*********************************\n\n");
-                action = true;
+            cat.checkStatus();
+            System.out.println(cat.sumFeed() + "\n================================");
+            action = true;
+            System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()));
+        }
+        for (Cat cat:cats
+             ) {
+            switch (cat.getStatus()){
+                case DEAD:
+                    System.out.println("Грустно");
+                    break;
+                case ALIVE:
+                    System.out.println("Ура");
+                    break;
+                case SLEEP:
+                    System.out.println("Zzzzz");
+                    break;
+                case EXPLODED:
+                    System.out.println("Она взорвалась!");
+                    break;
+                default:
+                    System.out.println("ПОхуй");
             }
+        }
+        while (action) {
+            System.out.println("Массив");
+            System.out.println(cats);
+            Scanner sc2 = new Scanner(System.in);
+
+            int index = sc2.nextInt();
+            System.out.println(cats.get(index).getStatus().getLocalisation());
+        //    System.out.println("\tКоличесвто живых кошек: " + cat.getCount() + "\n*********************************\n\n");
+
         }
     }
 }

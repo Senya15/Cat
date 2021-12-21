@@ -3,8 +3,6 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.Random;
 
-import static java.time.chrono.JapaneseEra.values;
-
 @Getter
 @Setter
 //@NoArgsConstructor
@@ -13,21 +11,19 @@ public class Cat {
     public static final int LEGS_COUNT = 4;
     public static final double MIN_WEIGHT = 1000.0;
     public static final double MAX_WEIGHT = 5000.0;
-    private final CatColor RANDOM_COLOR;
+    private CatColor color;
 
     private double originWeight;
     private double weight;
     private double feed;
     private String name;
-
-    public static int Count;
+    private CatStatus status;
 
     public Cat() {
 
-        Count++;
         weight = 1500 + 3000 * Math.random();
         originWeight = weight;
-        RANDOM_COLOR = CatColor.values()[new Random().nextInt(CatColor.values().length)];
+        color = CatColor.values()[new Random().nextInt(CatColor.values().length)];
 
     }
 
@@ -57,21 +53,16 @@ public class Cat {
         weight = weight + amount;
 
     }
-    public int getCount () {
-        return Count;
-    }
 
-    public String getStatus() {
+    public void checkStatus() {
         if (weight < MIN_WEIGHT) {
-            Cat.Count--;
-            return "Умерла :(";
+            this.status = CatStatus.DEAD;
         } else if (weight > MAX_WEIGHT) {
-            Cat.Count--;
-            return "ВЗОРВАЛАСЬ!";
+            this.status = CatStatus.EXPLODED;
         } else if (weight > originWeight) {
-            return "Спит Zzzzz";
+            this.status = CatStatus.SLEEP;
         } else {
-            return "Кошка на вас смотрит...";
+            this.status = CatStatus.ALIVE;
         }
     }
 
