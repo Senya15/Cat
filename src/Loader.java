@@ -1,4 +1,3 @@
-import javax.naming.Name;
 import java.util.Scanner;
 
 
@@ -9,7 +8,7 @@ public class Loader {
         boolean action = true;
 
 //#######################################################################################################
-//        Генерация кошек!
+//        Генерация кошек! sdasdas test test
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Сколько кошек сгенерировать? ");
