@@ -1,8 +1,6 @@
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Collections;
 import java.util.Random;
 
 import static java.time.chrono.JapaneseEra.values;
@@ -23,9 +21,6 @@ public class Cat {
     private String name;
 
     public static int Count;
-
-   // DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
 
     public Cat() {
 
@@ -65,11 +60,6 @@ public class Cat {
     public int getCount () {
         return Count;
     }
-
-   /* public String getWeight() {
-    //    String resultWeight = decimalFormat.format(weight);
-        return String.format("%.2f", weight);
-    }*/
 
     public String getStatus() {
         if (weight < MIN_WEIGHT) {
