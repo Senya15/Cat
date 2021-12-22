@@ -1,7 +1,7 @@
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-//@AllArgsConstructor
+@AllArgsConstructor
 @Getter
 public enum CatStatus {
     ALIVE("Жива"),
@@ -11,10 +11,10 @@ public enum CatStatus {
 
     private final String localisation;
 
-    CatStatus(String localisation){
+  /*  CatStatus(String localisation){
         this.localisation = localisation;
 
     }
-
+*/
 
 }

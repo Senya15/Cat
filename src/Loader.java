@@ -29,7 +29,7 @@ public class Loader {
             cats.add(cat);
 
             System.out.println("\tКошка №: " + number++);
-            System.out.println("\tЦвет кошки: " + cat.getColor());
+            System.out.println("\tЦвет кошки: " + cat.getColor().getLocalisation());
             System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()) + " грамм");
 
 //###############################################################################################################
