@@ -7,7 +7,8 @@ public class Loader {
         int number = 1;
         int catCount;
         boolean action = true;
-        ArrayList<Cat> cats = new ArrayList<>();
+        ArrayList<Cat> catsAll = new ArrayList<>();
+        ArrayList<Cat> catsAlive = new ArrayList<>();
 
 //#######################################################################################################
 //        Генерация кошек!
@@ -26,7 +27,8 @@ public class Loader {
 
         for (int i = 0; i < catCount; i++) {
             Cat cat = new Cat();
-            cats.add(cat);
+            catsAll.add(cat);
+            catsAlive.add(cat);
 
             System.out.println("\tКошка №: " + number++);
             System.out.println("\tЦвет кошки: " + cat.getColor().getLocalisation());
@@ -65,37 +67,46 @@ public class Loader {
             }
 
             cat.checkStatus();
+       //     for (Cat cat:catsAll) {
+                switch (cat.getStatus()){
+                    case DEAD:
+                        System.out.println("Кошка умерла, грустно :(");
+                        System.out.println("\tКошка весила перед смертью: " + String.format("%.2f", cat.getWeight()));
+                        catsAlive.remove(catsAlive.size()-1);
+                        break;
+                    case ALIVE:
+                        System.out.println("Кошечка смотрит на вас -_-");
+                        System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()));
+                        break;
+                    case SLEEP:
+                        System.out.println("Zzzzz");
+                        System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()));
+                        break;
+                    case EXPLODED:
+                        System.out.println("Взорвалась кошка!");
+                        System.out.println("\tКошка весила перед взрывом: " + String.format("%.2f", cat.getWeight()));
+                        catsAlive.remove((catsAlive.size())-1);
+                        break;
+                    default:
+                        System.out.println("ПОхуй");
+                }
+       //    }
             System.out.println(cat.sumFeed() + "\n================================");
             action = true;
-            System.out.println("\tКошка весит: " + String.format("%.2f", cat.getWeight()));
-        }
-        for (Cat cat:cats
-             ) {
-            switch (cat.getStatus()){
-                case DEAD:
-                    System.out.println("Грустно");
-                    break;
-                case ALIVE:
-                    System.out.println("Ура");
-                    break;
-                case SLEEP:
-                    System.out.println("Zzzzz");
-                    break;
-                case EXPLODED:
-                    System.out.println("Она взорвалась!");
-                    break;
-                default:
-                    System.out.println("ПОхуй");
-            }
-        }
-        while (action) {
-            System.out.println("Массив");
-            System.out.println(cats);
-            Scanner sc2 = new Scanner(System.in);
 
+        }
+
+        while (action) {
+            System.out.print("Всего кошек: ");
+            System.out.println(catsAll.size());
+            System.out.print("Живые кошки " + catsAlive + ": ");
+            System.out.println(catsAlive.size());
+            System.out.print("Проверить статус всех кошек. Введите индекс кошки (начиная с нуля): ");
+            Scanner sc2 = new Scanner(System.in);
             int index = sc2.nextInt();
-            System.out.println(cats.get(index).getStatus().getLocalisation());
-        //    System.out.println("\tКоличесвто живых кошек: " + cat.getCount() + "\n*********************************\n\n");
+            System.out.println(catsAll.get(index).getStatus().getLocalisation());
+            System.out.println("\tКошка весит: " + String.format("%.2f", catsAll.get(index).getWeight()));
+            System.out.println("\n########################################\n");
 
         }
     }
