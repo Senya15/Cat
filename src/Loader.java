@@ -107,6 +107,13 @@ public class Loader {
             System.out.println(catsAll.get(index).getStatus().getLocalisation());
             System.out.println("\tКошка весит: " + String.format("%.2f", catsAll.get(index).getWeight()));
             System.out.println("\n########################################\n");
+            System.out.println("Повторить?");
+
+            if (sc.hasNext("нет")) {
+                action = false;                 // с консоли получаем "нет" - цикл становится false и прекращается!
+            } else if (sc.hasNext("да")){
+                sc.next();
+            }
 
         }
     }
