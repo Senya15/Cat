@@ -4,7 +4,29 @@ import java.util.Scanner;
 
 public class Loader {
     public static void main(String[] args) {
-        int number = 1;
+
+        Cat paren = new Cat();
+        Cat vasya = new Cat();
+
+
+        paren.setName("Парень");
+        vasya.setName(paren.getName());
+        vasya.setWeight(paren.getWeight());
+
+        System.out.println(String.format("%.2f", paren.getWeight()));
+
+        paren.feed(1000);
+        paren.checkStatus();
+        vasya.setStatus(paren.getStatus());
+
+        System.out.println(paren.getName());
+        System.out.println(String.format("%.2f", paren.getWeight()));
+        System.out.println(paren.getStatus().getLocalisation());
+        System.out.println("##########################################");
+        System.out.println(vasya.getName());
+        System.out.println(String.format("%.2f", vasya.getWeight()));
+        System.out.println(vasya.getStatus().getLocalisation());
+       /* int number = 1;
         int catCount;
         boolean action = true;
         ArrayList<Cat> catsAll = new ArrayList<>();
@@ -115,7 +137,7 @@ public class Loader {
                 sc.next();
             }
 
-        }
+        }*/
     }
 }
 
