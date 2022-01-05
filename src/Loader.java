@@ -1,36 +1,15 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Loader {
     public static void main(String[] args) {
 
-        Cat paren = new Cat();
-        Cat vasya = new Cat();
-
-
-        paren.setName("Парень");
-        vasya.setName(paren.getName());
-        vasya.setWeight(paren.getWeight());
-
-        System.out.println(String.format("%.2f", paren.getWeight()));
-
-        paren.feed(1000);
-        paren.checkStatus();
-        vasya.setStatus(paren.getStatus());
-
-        System.out.println(paren.getName());
-        System.out.println(String.format("%.2f", paren.getWeight()));
-        System.out.println(paren.getStatus().getLocalisation());
-        System.out.println("##########################################");
-        System.out.println(vasya.getName());
-        System.out.println(String.format("%.2f", vasya.getWeight()));
-        System.out.println(vasya.getStatus().getLocalisation());
-       /* int number = 1;
+        int number = 1;
         int catCount;
         boolean action = true;
         ArrayList<Cat> catsAll = new ArrayList<>();
-        ArrayList<Cat> catsAlive = new ArrayList<>();
+
+
 
 //#######################################################################################################
 //        Генерация кошек!
@@ -50,7 +29,6 @@ public class Loader {
         for (int i = 0; i < catCount; i++) {
             Cat cat = new Cat();
             catsAll.add(cat);
-            catsAlive.add(cat);
 
             System.out.println("\tКошка №: " + number++);
             System.out.println("\tЦвет кошки: " + cat.getColor().getLocalisation());
@@ -94,7 +72,6 @@ public class Loader {
                     case DEAD:
                         System.out.println("Кошка умерла, грустно :(");
                         System.out.println("\tКошка весила перед смертью: " + String.format("%.2f", cat.getWeight()));
-                        catsAlive.remove(catsAlive.size()-1);
                         break;
                     case ALIVE:
                         System.out.println("Кошечка смотрит на вас -_-");
@@ -107,7 +84,6 @@ public class Loader {
                     case EXPLODED:
                         System.out.println("Взорвалась кошка!");
                         System.out.println("\tКошка весила перед взрывом: " + String.format("%.2f", cat.getWeight()));
-                        catsAlive.remove((catsAlive.size())-1);
                         break;
                     default:
                         System.out.println("ПОхуй");
@@ -121,8 +97,8 @@ public class Loader {
         while (action) {
             System.out.print("Всего кошек: ");
             System.out.println(catsAll.size());
-            System.out.print("Живые кошки " + catsAlive + ": ");
-            System.out.println(catsAlive.size());
+            System.out.print("Мёртвые кошки " + ": ");
+            System.out.println(catsAll.stream().filter(cat -> cat.getStatus().equals(CatStatus.DEAD) || cat.getStatus().equals(CatStatus.EXPLODED)));
             System.out.print("Проверить статус всех кошек. Введите индекс кошки (начиная с нуля): ");
             Scanner sc2 = new Scanner(System.in);
             int index = sc2.nextInt();
@@ -137,7 +113,7 @@ public class Loader {
                 sc.next();
             }
 
-        }*/
+        }
     }
 }
 
